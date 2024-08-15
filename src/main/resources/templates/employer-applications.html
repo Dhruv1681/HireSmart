@@ -72,10 +72,11 @@
 <div class="container">
   <h1>Applications for Your Jobs</h1>
   <ul class="application-list">
-    <li th:each="application : ${applications}" class="application-item">
-      <h2 th:text="${application.student.name}">Student Name</h2>
-      <p><strong>Job:</strong> <span th:text="${application.job.name}">Job Title</span></p>
-      <p><strong>Status:</strong> <span th:text="${application.status}">Status</span></p>
+    <li th:each="appl : ${applications}" class="application-item">
+      <h2 th:text="${appl.getName()}">Student Name</h2>
+      <p><strong>Job:</strong> <span th:text="${appl.getDescription()}">Job Title</span></p>
+      <p><strong>Status:</strong> <span th:text="${appl.getStatus()}">Status</span></p>
+      <a th:href="@{/employer/applications/{id}(id=${appl.getId()})}" class="details-button">More Details</a>
     </li>
   </ul>
   <a th:href="@{/employer/home}" class="back-button">Back to Home</a>

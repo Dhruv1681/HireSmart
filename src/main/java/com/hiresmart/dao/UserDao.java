@@ -11,4 +11,5 @@ public interface UserDao {
     void save(User user);
     void deleteById(Long id);
     User update(User user);
+    List<User> findUsersByJob(long jobId);
 }

@@ -1,13 +1,12 @@
 package com.hiresmart.controller;
 
 import com.hiresmart.dao.EmployerDao;
-import com.hiresmart.daoImpl.EmployerDaoImpl;
-import com.hiresmart.model.Application;
 import com.hiresmart.model.User;
+import com.hiresmart.repository.UserRepository;
 import com.hiresmart.service.ApplicationService;
 import com.hiresmart.service.EmployerService;
+import com.hiresmart.service.UserService;
 import org.springframework.ui.Model;
-import com.hiresmart.model.Employer;
 import com.hiresmart.model.Job;
 import com.hiresmart.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,10 @@ public class EmployerController {
 
     @Autowired
     private EmployerService employerService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/home")
     public String viewJobs(Model model, Principal principal){
@@ -108,8 +111,20 @@ public class EmployerController {
         String username = principal.getName();
         System.out.println("Fetching student for username: " + username);
         User employer = employerDao.findByUsername(username);
-        List<Application> applications = applicationService.getApplicationsByStudent(employer);
+        List<Job> applications = jobService.getJobsByEmployer(employer);
+        System.out.println("applications posted");
+        for (Job application : applications) {
+            System.out.println(application.getName());
+        }
         model.addAttribute("applications", applications);
         return "employer-applications";
     }
+
+    @GetMapping("/applications/{jobId}")
+    public String getApplicants(@PathVariable Long jobId, Model model) {
+        List<User> applicants = userService.findUsersByJob(jobId);
+        model.addAttribute("applicants", applicants);
+        return "job-applicants";
+    }
+
 }

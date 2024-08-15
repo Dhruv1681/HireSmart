@@ -106,6 +106,9 @@
     .logo span {
       color: #218838;
     }
+    .view-applicants {
+      background-color: #0056b3;
+    }
 
   </style>
 </head>
@@ -124,7 +127,12 @@
   <a th:href="@{/employer/postJob}">
     <button type="button"><i class="fas fa-plus-circle"></i> Post a New Job</button>
   </a>
+  <a th:href="@{/employer/applications}">
+    <button class="view-applicants" type="button">View Applicants</button>
+  </a>
 </div>
+
+
 
 <h1>My Posted Jobs</h1>
 

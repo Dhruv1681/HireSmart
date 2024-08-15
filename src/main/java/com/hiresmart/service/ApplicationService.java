@@ -3,7 +3,6 @@ package com.hiresmart.service;
 import com.hiresmart.dao.ApplicationDao;
 import com.hiresmart.model.Application;
 import com.hiresmart.model.Job;
-import com.hiresmart.model.Student;
 import com.hiresmart.model.User;
 import com.hiresmart.repository.ApplicationRepository;
 import com.hiresmart.repository.JobRepository;

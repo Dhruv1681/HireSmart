@@ -3,6 +3,7 @@ package com.hiresmart.service;
 import com.hiresmart.constants.Roles;
 import com.hiresmart.dao.UserDao;
 import com.hiresmart.model.User;
+import com.hiresmart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,8 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private UserRepository userRepository;
 
     public User findByUsername(String username) {
         return userDao.findByUsername(username);
@@ -45,5 +48,9 @@ public class UserService {
 
     public User updateUser(User user) {
         return userDao.update(user);
+    }
+
+    public List<User> findUsersByJob(Long jobid){
+        return userDao.findUsersByJob(jobid);
     }
 }

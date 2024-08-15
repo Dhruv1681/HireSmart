@@ -2,11 +2,15 @@ package com.hiresmart.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 public class  User {
+    @OneToMany(mappedBy = "student")
+    private List<Application> applications;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -45,4 +45,9 @@ public class UserDaoImpl implements UserDao {
     public User update(User user) {
         return userRepository.save(user);
     }
+
+    @Override
+    public List<User> findUsersByJob(long jobId) {
+        return userRepository.findUsersByJob(jobId);
+    }
 }
