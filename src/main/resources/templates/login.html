@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .login {
+      margin-bottom: 1rem;
+      color: #333;
+      font-size: 25px;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #555;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error-message {
+      color: red;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .register-link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .register-link a {
+      color: #28a745;
+      text-decoration: none;
+    }
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+    .logo {
+      text-align: center;
+      color: #0056b3;
+      font-family: "Kohinoor Gujarati",serif;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .logo span {
+      color: #218838;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1 class="logo">Hire<span>Smart</span></h1>
+  <h1 class="login">Login</h1>
+  <form th:action="@{/users/login}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <div th:if="${param.error}" class="error-message">Invalid username or password.</div>
+
+    <button type="submit">Login</button>
+  </form>
+  <div class="register-link">
+    <p>New to HireSmart? <a th:href="@{/users/register}">Create an account</a></p>
+  </div>
+</div>
+</body>
+</html>
