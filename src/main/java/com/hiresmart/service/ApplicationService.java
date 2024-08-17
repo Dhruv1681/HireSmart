@@ -40,7 +40,7 @@ public class ApplicationService {
     }
 
     public List<Application> getApplicationsByStudent(User student) {
-        return applicationRepository.findByStudent(student);
+        return applicationDao.findByStudent(student);
     }
 
 

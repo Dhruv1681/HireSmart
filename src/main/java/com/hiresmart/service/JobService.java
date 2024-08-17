@@ -1,7 +1,6 @@
 package com.hiresmart.service;
 
 import com.hiresmart.dao.JobDao;
-import com.hiresmart.model.Employer;
 import com.hiresmart.model.Job;
 import com.hiresmart.model.User;
 import com.hiresmart.repository.JobRepository;

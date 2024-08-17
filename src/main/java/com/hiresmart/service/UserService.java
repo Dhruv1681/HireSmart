@@ -1,11 +1,9 @@
 package com.hiresmart.service;
 
-import com.hiresmart.constants.Roles;
 import com.hiresmart.dao.UserDao;
 import com.hiresmart.model.User;
 import com.hiresmart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

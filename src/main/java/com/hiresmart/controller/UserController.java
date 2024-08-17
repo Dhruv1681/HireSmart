@@ -1,6 +1,5 @@
 package com.hiresmart.controller;
 
-import com.hiresmart.constants.Roles;
 import com.hiresmart.model.User;
 import com.hiresmart.service.StudentService;
 import com.hiresmart.service.UserService;
