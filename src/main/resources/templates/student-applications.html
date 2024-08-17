@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Applications</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .application-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .application-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .application-item:last-child {
+      border-bottom: none;
+    }
+
+    .application-item h2 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    .application-item p {
+      margin: 5px 0;
+      color: #777;
+    }
+
+    .back-button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>My Applications</h1>
+  <ul class="application-list">
+    <li th:each="apple : ${applications}" class="application-item">
+      <h2 th:text="${apple.getName()}">Job Title</h2>
+      <p><strong>Employer:</strong> <span th:text="${apple.getJob().getDescription()}">Employer Name</span></p>
+      <p><strong>Status:</strong> <span th:text="${apple.getStatus()}">Status</span></p>
+    </li>
+  </ul>
+  <a th:href="@{/student/home}" class="back-button">Back to Home</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Job</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h1>Edit Job</h1>
+
+<form th:action="@{'/employer/editJob/' + ${job.id}}" method="post">
+  <label for="name">Job Name:</label>
+  <input type="text" id="name" name="name" th:value="${job.name}" required />
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" required th:text="${job.description}"></textarea>
+
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" th:value="${job.location}" required />
+
+  <label for="status">Status:</label>
+  <input type="text" id="status" name="status" th:value="${job.status}" required />
+
+  <label for="salary">Salary:</label>
+  <input type="text" id="salary" name="salary" th:value="${job.salary}" required />
+
+  <button type="submit">Update Job</button>
+</form>
+
+</body>
+</html>

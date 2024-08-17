@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Student Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 25px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    li:hover {
+      background-color: #f1f1f1;
+    }
+
+    span {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .logout-container {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .logout-button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+
+    .logout-button:hover {
+      background-color: #e53935;
+    }
+
+    .logo {
+      text-align: center;
+      color: #0056b3;
+      font-family: "Kohinoor Gujarati",serif;
+      font-size: 36px;
+      font-weight: 600;
+    }
+    .logo span {
+      color: #218838;
+    }
+    .back-button {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="logout-container">
+  <h1 class="logo">Hire<span>Smart</span></h1>
+  <form th:action="@{/logout}" method="post">
+    <button type="submit" class="logout-button">Logout</button>
+  </form>
+</div>
+
+<a th:href="@{/student/applications}" class="back-button">My Applications</a>
+
+<h1>Job Listings</h1>
+<ul>
+  <li th:each="job : ${jobs}">
+    <div class="job-listing">
+      <h2 th:text="${job.name}">Job Title</h2>
+      <p><strong>Description:</strong> <span th:text="${job.description}"></span></p>
+      <p><strong>Location:</strong> <span th:text="${job.location}"></span></p>
+      <p><strong>Status:</strong> <span th:text="${job.status}"></span></p>
+      <p><strong>Salary:</strong> <span th:text="${job.salary}"></span></p>
+      <form th:action="@{'/student/apply/' + ${job.id}}" method="post">
+        <button type="submit"><i class="fas fa-paper-plane"></i> Apply</button>
+      </form>
+    </div>
+  </li>
+</ul>
+</body>
+</html>
